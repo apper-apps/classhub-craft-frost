@@ -39,10 +39,15 @@ const studentService = {
     }
   },
 
-  async getById(id) {
+async getById(id) {
     try {
       const { ApperClient } = window.ApperSDK;
-const params = {
+      const apperClient = new ApperClient({
+        apperProjectId: import.meta.env.VITE_APPER_PROJECT_ID,
+        apperPublicKey: import.meta.env.VITE_APPER_PUBLIC_KEY
+      });
+      
+      const params = {
         fields: [
           { field: { Name: "first_name_c" } },
           { field: { Name: "last_name_c" } },
@@ -73,10 +78,15 @@ const params = {
     }
   },
 
-  async create(studentData) {
+async create(studentData) {
     try {
       const { ApperClient } = window.ApperSDK;
-const params = {
+      const apperClient = new ApperClient({
+        apperProjectId: import.meta.env.VITE_APPER_PROJECT_ID,
+        apperPublicKey: import.meta.env.VITE_APPER_PUBLIC_KEY
+      });
+      
+      const params = {
         records: [studentData]
       };
 
@@ -113,10 +123,15 @@ const params = {
     }
   },
 
-  async update(id, studentData) {
+async update(id, studentData) {
     try {
       const { ApperClient } = window.ApperSDK;
-const params = {
+      const apperClient = new ApperClient({
+        apperProjectId: import.meta.env.VITE_APPER_PROJECT_ID,
+        apperPublicKey: import.meta.env.VITE_APPER_PUBLIC_KEY
+      });
+      
+      const params = {
         records: [{
           Id: parseInt(id),
           ...studentData
@@ -156,14 +171,19 @@ const params = {
     }
   },
 
-  async delete(id) {
+async delete(id) {
     try {
       const { ApperClient } = window.ApperSDK;
-const params = {
+      const apperClient = new ApperClient({
+        apperProjectId: import.meta.env.VITE_APPER_PROJECT_ID,
+        apperPublicKey: import.meta.env.VITE_APPER_PUBLIC_KEY
+      });
+      
+      const params = {
         RecordIds: [parseInt(id)]
       };
 
-const response = await apperClient.deleteRecord('student_c', params);
+      const response = await apperClient.deleteRecord('student_c', params);
       
       if (!response.success) {
         console.error(response.message);
