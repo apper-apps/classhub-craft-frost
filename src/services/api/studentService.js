@@ -2,12 +2,13 @@ const studentService = {
   async getAll() {
     try {
       const { ApperClient } = window.ApperSDK;
-      const apperClient = new ApperClient({
-        apperProjectId: import.meta.env.VITE_APPER_PROJECT_ID,
-        apperPublicKey: import.meta.env.VITE_APPER_PUBLIC_KEY
-      });
+// Initialize ApperClient once at module level
+    const apperClient = new ApperClient({
+      apperProjectId: import.meta.env.VITE_APPER_PROJECT_ID,
+      apperPublicKey: import.meta.env.VITE_APPER_PUBLIC_KEY
+    });
 
-const params = {
+    const params = {
         fields: [
           { field: { Name: "first_name_c" } },
           { field: { Name: "last_name_c" } },
@@ -41,11 +42,6 @@ const params = {
   async getById(id) {
     try {
       const { ApperClient } = window.ApperSDK;
-      const apperClient = new ApperClient({
-        apperProjectId: import.meta.env.VITE_APPER_PROJECT_ID,
-        apperPublicKey: import.meta.env.VITE_APPER_PUBLIC_KEY
-      });
-
 const params = {
         fields: [
           { field: { Name: "first_name_c" } },
@@ -80,11 +76,6 @@ const params = {
   async create(studentData) {
     try {
       const { ApperClient } = window.ApperSDK;
-      const apperClient = new ApperClient({
-        apperProjectId: import.meta.env.VITE_APPER_PROJECT_ID,
-        apperPublicKey: import.meta.env.VITE_APPER_PUBLIC_KEY
-      });
-
 const params = {
         records: [studentData]
       };
@@ -125,11 +116,6 @@ const params = {
   async update(id, studentData) {
     try {
       const { ApperClient } = window.ApperSDK;
-      const apperClient = new ApperClient({
-        apperProjectId: import.meta.env.VITE_APPER_PROJECT_ID,
-        apperPublicKey: import.meta.env.VITE_APPER_PUBLIC_KEY
-      });
-
 const params = {
         records: [{
           Id: parseInt(id),
@@ -173,12 +159,7 @@ const params = {
   async delete(id) {
     try {
       const { ApperClient } = window.ApperSDK;
-      const apperClient = new ApperClient({
-        apperProjectId: import.meta.env.VITE_APPER_PROJECT_ID,
-        apperPublicKey: import.meta.env.VITE_APPER_PUBLIC_KEY
-      });
-
-      const params = {
+const params = {
         RecordIds: [parseInt(id)]
       };
 
